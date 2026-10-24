@@ -1,0 +1,14 @@
+groups:
+  - name: api
+    rules:
+      - alert: HighHttpErrorRate
+        expr: |
+          sum(rate(http_requests_total{code=~"5.."}[1m]))
+          /
+          sum(rate(http_requests_total[1m]))
+          > 0.05
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: HTTP 5xx 比例超过 5%
