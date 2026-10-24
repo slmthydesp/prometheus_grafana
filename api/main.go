@@ -101,9 +101,8 @@ func buildMux(m *metrics, metricsH http.Handler, sleep func(time.Duration), okN 
 }
 
 func main() {
-	rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 	m := newMetrics(prometheus.DefaultRegisterer)
-	mux := buildMux(m, promhttp.Handler(), time.Sleep, func() int { return rng.Intn(61) })
+	mux := buildMux(m, promhttp.Handler(), time.Sleep, func() int { return rand.Intn(61) })
 	srv := &http.Server{
 		Addr:              "0.0.0.0:8080",
 		Handler:           mux,
