@@ -74,7 +74,7 @@
         "defaults": {
           "unit": "percentunit",
           "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": null }, { "color": "red", "value": 0.05 }] },
-          "custom": { "drawStyle": "line", "lineWidth": 1, "fillOpacity": 10, "showPoints": "never", "spanNulls": false, "thresholdsStyle": { "mode": "line" } }
+          "custom": { "drawStyle": "line", "lineWidth": 1, "fillOpacity": 10, "showPoints": "never", "spanNulls": false, "thresholdsStyle": { "mode": "line" }, "axisSoftMin": 0, "axisSoftMax": 0.2 }
         },
         "overrides": []
       }
