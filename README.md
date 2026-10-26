@@ -1,6 +1,12 @@
 # Prometheus + Grafana 教学案例
 
-一个 Go 服务产生 HTTP 指标。Prometheus 抓取并计算告警，Grafana 画图，Alertmanager 在自己的页面上显示告警。
+## Prometheus 和 Grafana 是什么
+
+**Prometheus** 按固定间隔去抓服务上的 `/metrics`。抓到的每个数字都带上时间，存成一条时间序列。用 PromQL 可以问「最近一分钟平均每秒多少」「95% 的请求花了多久」。规则持续成立时，它把告警交给 Alertmanager。
+
+**Grafana** 用来看图。它连上 Prometheus，把同一条 PromQL 画成曲线、表格和阈值线。登录后打开的 HTTP RED 看板，数据都来自 Prometheus。
+
+下面这个案例用一个很小的 Go 服务产生 HTTP 指标，把抓取、查询、看板和一条告警串起来。Alertmanager 只在自己的页面上显示告警。
 
 ## 五个容器各管什么
 
